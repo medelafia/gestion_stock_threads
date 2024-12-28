@@ -9,14 +9,20 @@ public class Customer implements Runnable{
         this.name = name  ;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public void run() {
         Product product = null;
         try {
             product = this.stock.getProduct();
+            System.out.println(this.name + " got : " + product.getName() );
+            Thread.sleep(700);
+            System.out.println("-------------------------------------------");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(this.name + " got : " + product.getName() );
     }
 }
